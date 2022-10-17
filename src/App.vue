@@ -41,9 +41,12 @@ router.beforeEach((to, from, next) => {
 }
 
 :root {
-    --bg: #e5e5e5;
+    --bg: #F6F3F3;
     --bg-dark: #ECEAEA;
+    --border: #E1E1E1;
+
     --black: #343030;
+    --black55: #555555;
     --btn-normal: #403432;
     --btn-hover: #776763;
     --btn-disabled: #C1B4B1;
@@ -51,9 +54,10 @@ router.beforeEach((to, from, next) => {
 }
 
 body {
-    color: var(--black);
-    background-color: var(--bg);
     width: 100vw;
+    color: var(--black);
+    font-size: 14px;
+    background-color: var(--bg);
     overflow-x: hidden;
 }
 
@@ -66,9 +70,48 @@ body {
     padding: 0;
 }
 
+input,
+a,
+button {
+    outline: none;
+    border: none;
+    text-decoration: none;
+
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 0;
+}
+
+input:focus,
+a:focus,
+button:focus {
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
 .container {
     max-width: calc(1216px + 60px);
     margin: 0 auto;
-    padding: 0 40px 0 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+.basic-btn {
+    width: 122px;
+    height: 48px;
+    background-color: var(--btn-normal);
+    font-size: 14px;
+    color: white;
+    font-weight: 700;
 }
 </style>

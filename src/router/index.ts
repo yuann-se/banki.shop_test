@@ -4,9 +4,34 @@ import HomePageVue from "../views/HomePage.vue";
 const routes = [
     {
         path: '/',
-        name: 'Home',
+        name: 'Главная',
         component: HomePageVue,
-    }
+    },
+    {
+        path: '/catalog',
+        name: 'Каталог',
+        component: HomePageVue,
+    },
+    {
+        path: '/delivery',
+        name: 'Доставка',
+        component: HomePageVue,
+    },
+    {
+        path: '/payment',
+        name: 'Оплата',
+        component: HomePageVue,
+    },
+    {
+        path: '/contacts',
+        name: 'Контакты',
+        component: HomePageVue,
+    },
+    {
+        path: '/about_us',
+        name: 'О компании',
+        component: HomePageVue,
+    },
 ]
 
 const router = createRouter({
