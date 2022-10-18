@@ -6,4 +6,9 @@ import store from './store'
 const app = createApp(App)
 app.use(router)
     .use(store)
-    .mount('#app')
+    .mount('#root')
+
+app.directive("disable-scroll", {
+    mounted() { document.body.style.overflowY = 'hidden' },
+    unmounted() { document.body.style.overflowY = 'auto' }
+})

@@ -1,3 +1,4 @@
+import CardModalVue from "../views/CardModal.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import HomePageVue from "../views/HomePage.vue";
 
@@ -6,6 +7,12 @@ const routes = [
         path: '/',
         name: 'Главная',
         component: HomePageVue,
+        children: [
+            {
+                path: ':painting',
+                component: CardModalVue
+            }
+        ]
     },
     {
         path: '/catalog',

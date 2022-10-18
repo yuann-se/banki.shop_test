@@ -40,6 +40,10 @@ router.beforeEach((to, from, next) => {
     font-style: normal;
 }
 
+/* html {
+    overflow-x: hidden;
+} */
+
 :root {
     --bg: #F6F3F3;
     --bg-dark: #ECEAEA;
@@ -61,6 +65,12 @@ body {
     overflow-x: hidden;
 }
 
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 * {
     -webkit-tap-highlight-color: transparent;
     font-family: 'Merriweather', sans-serif;
@@ -76,7 +86,7 @@ button {
     outline: none;
     border: none;
     text-decoration: none;
-
+    color: inherit;
 }
 
 button {
@@ -100,7 +110,7 @@ a:visited {
 }
 
 .container {
-    max-width: calc(1216px + 60px);
+    max-width: calc(1216px + 80px);
     margin: 0 auto;
     padding-right: 40px;
     padding-left: 40px;
@@ -113,5 +123,33 @@ a:visited {
     font-size: 14px;
     color: white;
     font-weight: 700;
+    outline: 2px solid transparent;
+    transition: outline .2s ease, background-color .2s ease;
+}
+
+.basic-btn:focus-visible {
+    background-color: var(--btn-hover);
+    outline: 2px solid var(--btn-normal);
+}
+
+.basic-btn:hover {
+    background-color: var(--btn-hover);
+}
+
+.basic-btn:active {
+    background-color: var(--black);
+}
+
+.basic-btn:disabled {
+    pointer-events: none;
+    opacity: .9;
+    cursor: default;
+}
+
+@media(max-width: 700px) {
+    .container {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
 }
 </style>

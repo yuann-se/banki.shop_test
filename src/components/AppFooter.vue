@@ -9,7 +9,7 @@
                 </a>
                 <address class="contact">
                     <LocationIcon />
-                    <span>г. Санкт-Петербург, ул. Ефимова, 3</span>
+                    <span>г.&nbsp;Санкт-Петербург, ул.&nbsp;Ефимова,&nbsp;3</span>
                 </address>
             </div>
         </div>
@@ -23,11 +23,8 @@ import LocationIcon from './icons/LocationIcon.vue';
 </script>
 <style scoped>
 .footer {
-    position: fixed;
     height: 97px;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    margin-top: auto;
     background-color: var(--bg-dark);
 }
 
@@ -35,8 +32,13 @@ import LocationIcon from './icons/LocationIcon.vue';
     color: var(--black55);
 }
 
+.footer:deep(.navlist__item::before) {
+    background-color: var(--black55);
+}
+
 .footer__container {
     height: 100%;
+    padding-right: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -66,5 +68,71 @@ import LocationIcon from './icons/LocationIcon.vue';
 
 .contact:last-child {
     margin-left: 15px;
+}
+
+@media(max-width: 1300px) {
+    .footer__container {
+        flex-direction: column;
+        justify-content: center;
+        padding-right: 40px;
+    }
+
+    .footer:deep(.nav),
+    .footer__contacts {
+        width: 60%;
+        max-width: none;
+        justify-content: space-around;
+    }
+
+    .footer__contacts {
+        margin-top: 20px;
+    }
+}
+
+@media(max-width: 1000px) {
+
+    .footer:deep(.nav),
+    .footer__contacts {
+        width: 80%;
+    }
+}
+
+@media(max-width: 700px) {
+
+    .footer {
+        height: fit-content;
+    }
+
+    .footer__container {
+        flex-direction: row;
+        padding: 20px 15px;
+    }
+
+    .footer:deep(.navlist) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer:deep(.navlist__item) {
+        margin-bottom: 10px;
+    }
+
+    .footer__contacts {
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    .contact:last-child {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .footer:deep(.nav) {
+        width: 40%;
+    }
+
+    .footer__contacts {
+        width: 60%;
+    }
 }
 </style>

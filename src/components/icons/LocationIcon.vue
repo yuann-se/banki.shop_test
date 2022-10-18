@@ -5,3 +5,9 @@
             fill="#555555" />
     </svg>
 </template>
+
+<style scoped>
+svg {
+    min-width: 16px;
+}
+</style>

@@ -3,61 +3,61 @@ const path = require('path')
 
 const { VueLoaderPlugin } = require('vue-loader')
 const { DefinePlugin } = require('webpack')
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-// const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === 'development';
 
 module.exports = {
-    entry: './src/main.ts',
+    resolve: {
+        extensions: ['.js', '.ts']
+    },
+    entry: path.resolve(__dirname, './src/main.ts'),
     mode: NODE_ENV,
     output: {
         path: path.resolve(__dirname, './dist'),
-    },
-    resolve: {
-        extensions: ['.ts', '.js']
+        filename: 'main.js',
     },
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: [{
-                    loader: 'vue-style-loader'
-                },
-                {
-                    loader: 'css-loader',
-                    options: {
-                        sourceMap: IS_DEV,
-                    }
-                }
-                ]
-            },
-            {
                 test: /\.vue$/,
                 exclude: /(node_modules)/,
-                loader: 'vue-loader'
+                use: ['vue-loader']
             },
             {
                 test: /\.ts$/,
-                loader: 'ts-loader',
-                options: {
-                    appendTsSuffixTo: [/\.vue$/]
-                }
+                use: [{
+                    loader: 'ts-loader',
+                    options: {
+                        appendTsSuffixTo: [/\.vue$/]
+                    }
+                }],
+
+            },
+            {
+                test: /\.css$/,
+                use: ['vue-style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: IS_DEV,
+                        }
+                    }
+                ]
             },
             {
                 test: /\.html$/i,
-                loader: "html-loader",
+                use: ["html-loader"],
             },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules)/,
-                use: {
+                use: [{
                     loader: 'babel-loader',
                     options: {
                         presets: ["@babel/preset-env"],
                     },
-                }
+                }]
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
@@ -79,12 +79,18 @@ module.exports = {
             __VUE_PROD_DEVTOOLS__: false,
         }),
         new HtmlWebpackPlugin({
-            template: './index.html'
+            template: path.resolve(__dirname, './src/index.html')
         }),
     ],
     devServer: {
         hot: true,
         compress: true,
+        historyApiFallback: true
     },
-    devtool: IS_DEV ? 'eval' : false
+    devtool: IS_DEV ? 'eval' : false,
+    performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    }
 }

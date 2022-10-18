@@ -29,10 +29,12 @@ const cards = computed(() => { return store.getters.filteredCards })
     margin-bottom: 40px;
     font-size: 24px;
     font-weight: 700;
+    line-height: 35px;
 }
 
 .cards-wrapper {
     display: flex;
+    flex-wrap: wrap;
 }
 
 
@@ -45,4 +47,6 @@ const cards = computed(() => { return store.getters.filteredCards })
 .cards-leave-to {
     opacity: 0;
 }
+
+@media(max-width: 1300px) {}
 </style>

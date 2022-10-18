@@ -19,9 +19,11 @@
         </ul>
     </nav>
 </template>
+
 <script setup lang="ts">
 
 </script>
+
 <style scoped>
 .nav {
     width: 50%;
@@ -31,6 +33,7 @@
 .navlist {
     display: flex;
     width: 100%;
+    margin-left: 95px;
     justify-content: space-between;
 }
 
@@ -39,6 +42,38 @@
 }
 
 .navlist__item {
+    position: relative;
     font-size: 14px;
+}
+
+.navlist__item a {
+    outline: 1px solid transparent;
+    outline-offset: 3px;
+    transition: outline .2s ease;
+}
+
+.navlist__item::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    max-width: 0;
+    height: 1px;
+    bottom: -3px;
+    background-color: var(--black);
+    transition: max-width .2s ease;
+}
+
+.navlist__item a:focus-visible {
+    outline: 1px solid var(--black);
+}
+
+.navlist__item:hover::before {
+    max-width: 100%;
+}
+
+@media(max-width: 1300px) {
+    .navlist {
+        margin-left: 0;
+    }
 }
 </style>
